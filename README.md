@@ -4,6 +4,8 @@ This is my *highly sophisticated* NixOS configuration. It's highly tailored towa
 
 ## Building
 
+Replace `hardware-configuration.nix` with your own from `/etc/nixos`.
+
 You can build and directly apply this config with:
 
 ```bash
