@@ -22,6 +22,11 @@
 
     home-manager
 
+    go
+    rustfmt
+    rust-analyzer
+    zig
+
     # Terminal
     kitty
     fzf

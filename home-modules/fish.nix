@@ -4,6 +4,8 @@
   programs.fish = {
     enable = true;
 
+    interactiveShellInit = "set -U fish_greeting ''";
+
     shellAliases = {
       ls = "eza --icons";
       tree = "eza --icons --tree";

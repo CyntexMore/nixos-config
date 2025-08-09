@@ -126,6 +126,8 @@
     keepassxc
     xfce.thunar
     solaar
+    go
+    golangci-lint
   ];
 
   programs.steam = {
