@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
 {
+  nixpkgs.config.allowUnfree = true;
+
   home.packages = with pkgs; [
     # User packages
     fastfetch
@@ -12,7 +14,23 @@
     mpv
     yt-dlp
 
-    blender
+    gpu-screen-recorder
+    ffmpeg-full
+
+    doxygen
+
+    gnumake
+
+    gemini-cli
+
+    blender-hip
+
+    obsidian
+
+    rustc
+    cargo
+
+    yarn
 
     btop
 

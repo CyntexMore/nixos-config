@@ -95,7 +95,7 @@
     shell = pkgs.fish;
     isNormalUser = true;
     description = "david";
-    extraGroups = [ "networkmanager" "wheel" "i2c" ];
+    extraGroups = [ "networkmanager" "wheel" "i2c" "amdgpu" "docker" ];
     packages = with pkgs; [
       kdePackages.kate
     ];
@@ -128,20 +128,58 @@
     solaar
     go
     golangci-lint
+    cmake
+
+    docker
+
+    # ROCm
+    rocmPackages.rocminfo
+    rocmPackages.rocmPath
+    rocmPackages.rocm-smi
+    rocmPackages.rocm-core
+    rocmPackages.rocm-cmake
+    rocmPackages.rocm-device-libs
+    clinfo
+    # ROCm/HIP
+    rocmPackages.rocblas
+    rocmPackages.hipcc
+    rocmPackages.hipblas
+    rocmPackages.hipblaslt
+    rocmPackages.hip-common
+    rocmPackages.hipblas-common
+
+    # Compiler
+    gcc
+    clang
   ];
+
+  virtualisation.docker.enable = true;
+
+  services.ollama = {
+    enable = true;
+    acceleration = "rocm";
+  };
+
+  services.open-webui.enable = true;
 
   programs.steam = {
     enable = true;
     extraCompatPackages = [ pkgs.proton-ge-bin ];
   };
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
+    enable32Bit = true;
     extraPackages = with pkgs; [
       vulkan-loader
       vulkan-extension-layer
+      rocmPackages.clr.icd
     ];
   };
+
+  systemd.tmpfiles.rules = [
+    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
+  ];
 
   qt = {
     enable = true;

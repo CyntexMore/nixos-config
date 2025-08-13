@@ -64,19 +64,18 @@
 
     "$mainMod" = "SUPER";
     
-    # Program definitions
     "$terminal" = "kitty";
     "$applaunch" = "rofi -show drun";
     "$browser" = "firefox";
     "$fileManager" = "thunar";
 
     animations = {
-       enabled = true;
+      enabled = true;
 
-       bezier = [
-         "majesticBezier, 0.15, 0.9, 0.25, 1.05"
-	 "softFade, 0.4, 0, 0.2, 1"
-       ];
+      bezier = [
+        "majesticBezier, 0.15, 0.9, 0.25, 1.05"
+	      "softFade, 0.4, 0, 0.2, 1"
+      ];
 
        animation = [
          "windows, 1, 7, majesticBezier"
@@ -91,7 +90,6 @@
       preserve_split = true;
     };
 
-    # Common keybinds
     bind = [
       "CTRL ALT, T, exec, $terminal"
       "$mainMod, D, exec, $applaunch"
@@ -103,13 +101,11 @@
       "$mainMod SHIFT, F, fullscreen"
       "$mainMod, P, pseudo"
 
-      # Shit window focus
       "$mainMod, left, movefocus, l"
       "$mainMod, right, movefocus, r"
       "$mainMod, up, movefocus, u"
       "$mainMod, down, movefocus, d"
 
-      # Switch workspaces
       "$mainMod, 1, workspace, 1"
       "$mainMod, 2, workspace, 2"
       "$mainMod, 3, workspace, 3"
@@ -121,7 +117,6 @@
       "$mainMod, 9, workspace, 9"
       "$mainMod, 0, workspace, 10"
 
-      # Move active window to a workspace
       "$mainMod SHIFT, 1, movetoworkspace, 1"
       "$mainMod SHIFT, 2, movetoworkspace, 2"
       "$mainMod SHIFT, 3, movetoworkspace, 3"
@@ -133,16 +128,13 @@
       "$mainMod SHIFT, 9, movetoworkspace, 9"
       "$mainMod SHIFT, 0, movetoworkspace, 10"
 
-      # Scroll through workspaces
       "$mainMod, mouse_down, workspace, e+1"
       "$mainMod, mouse_up, workspace, e-1"
 
-      # Screenshots
       "bind = $mainMod SHIFT, S, exec, grimblast --freeze copysave area ~/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png"
     ];
 
     bindm = [
-      # Drag & dropping + resize
       "bindm = $mainMod, mouse:272, movewindow"
       "bindm = $mainMod, mouse:273, resizewindow"
     ];

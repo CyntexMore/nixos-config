@@ -12,6 +12,7 @@
       gopls.enable = true;
       zls.enable = true;
       nil-ls.enable = true;
+      clangd.enable = true;
     };
 
     colorschemes.gruvbox.enable = true;
@@ -52,6 +53,8 @@
     ];
 
     extraConfigLua = ''
+      vim.opt.guicursor = "n-v-c-i:block"
+
       vim.opt.number = true
       vim.opt.relativenumber = true
       vim.opt.clipboard = 'unnamedplus'
