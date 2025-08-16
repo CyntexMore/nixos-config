@@ -19,6 +19,7 @@
     ./qt.nix
     ./fish.nix
     ./quickshell.nix
+    ./hyprpanel.nix
   ];
 
   home.stateVersion = "25.05";

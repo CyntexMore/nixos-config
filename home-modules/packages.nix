@@ -67,7 +67,23 @@
     networkmanagerapplet
     btop
     ddcutil
-    quickshell
+    
+    # HyprPanel
+    hyprpanel
+    wireplumber
+    libgtop
+    bluez
+    bluez-tools
+    dart-sass
+    upower
+    gvfs
+    gtksourceview3
+    libchamplain_libsoup3
+    # *optional
+    wf-recorder
+    hyprpicker
+    hyprsunset
+    matugen
 
     # QT stuff
     libsForQt5.qt5ct
