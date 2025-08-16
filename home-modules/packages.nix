@@ -14,6 +14,8 @@
     mpv
     yt-dlp
 
+    pgcli
+
     gpu-screen-recorder
     ffmpeg-full
 

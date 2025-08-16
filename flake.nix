@@ -27,7 +27,6 @@
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
           inherit system;
-
           modules = [
 
             ./configuration.nix
@@ -38,10 +37,21 @@
                 imports = [
                   nixvim.homeModules.nixvim
 
+                  
                   ./home-modules/init.nix
                 ];
               };
             }
+          ];
+        };
+      };
+
+      homeConfigurations = {
+        "david" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [
+            nixvim.homeModules.nixvim
+            ./home-modules/init.nix
           ];
         };
       };

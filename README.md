@@ -6,10 +6,5 @@ This is my *highly sophisticated* NixOS configuration. It's highly tailored towa
 
 Replace `hardware-configuration.nix` with your own from `/etc/nixos`.
 
-You can build and directly apply this config with:
+There are two scripts provided: `./rebuild.sh`, which rebuilds the entire system configuration, including home-manager stuff; and there's `./home.sh`, which only rebuilds the home-manager configuration and doesn't touch the system config.
 
-```bash
-$ sudo nixos-rebuild switch --flake .#nixos
-```
-
-You can also do `build-image`, or `build-vm`.
