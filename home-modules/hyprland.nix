@@ -2,9 +2,9 @@
 
 {
   home.sessionVariables = {
-    XCURSOR_THEME = "Bibata-Modern-Classic";
+    XCURSOR_THEME = "DMZ-Black";
     XCURSOR_SIZE = "24";
-    HYPRCURSOR_THEME = "Bibata-Modern-Classic";
+    HYPRCURSOR_THEME = "DMZ-Black";
     HYPRCURSOR_SIZE = "24";
     QT_QPA_PLATFORM = "wayland";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
@@ -56,8 +56,8 @@
     exec-once = [
       "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
       "fcitx5"
-      "dunst"
-      "waybar"
+      # "dunst"
+      # "hyprpanel"
       "hyprpaper"
       "solaar"
     ];

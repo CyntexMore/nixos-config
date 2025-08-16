@@ -83,7 +83,6 @@
     wf-recorder
     hyprpicker
     hyprsunset
-    matugen
 
     # QT stuff
     libsForQt5.qt5ct
@@ -92,8 +91,11 @@
     # Theming
     vimix-icon-theme
     bibata-cursors
+    vanilla-dmz
     # ayu-theme-gtk
     gruvbox-gtk-theme
+    # Fonts
+    mplus-outline-fonts.githubRelease
 
     vulkan-tools
   ];

@@ -12,7 +12,7 @@
     ./hyprland.nix
     ./kitty.nix
     ./vesktop.nix
-    ./waybar.nix
+    # ./waybar.nix
     ./rofi.nix
     ./hyprpaper.nix
     ./gtk.nix

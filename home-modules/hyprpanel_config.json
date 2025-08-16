@@ -1,0 +1,90 @@
+{
+  "wallpaper.image": "/home/david/nixos-config/wallpaper/rocman.png",
+  "theme.matugen": false,
+  "theme.bar.menus.monochrome": true,
+  "bar.customModules.storage.paths": [
+    "/"
+  ],
+  "theme.font.weight": 400,
+  "theme.bar.floating": false,
+  "theme.bar.location": "top",
+  "bar.autoHide": "fullscreen",
+  "theme.bar.buttons.enableBorders": false,
+  "theme.bar.border.location": "none",
+  "bar.layouts": {
+    "0": {
+      "left": [
+        "dashboard",
+        "workspaces"
+      ],
+      "middle": [
+        "media"
+      ],
+      "right": [
+        "volume",
+        "clock",
+        "notifications"
+      ]
+    },
+    "1": {
+      "left": [
+        "dashboard",
+        "workspaces"
+      ],
+      "middle": [
+        "media",
+        "cava"
+      ],
+      "right": [
+        "cpu",
+        "ram",
+        "netstat",
+        "volume",
+        "hyprsunset",
+        "systray",
+        "clock",
+        "notifications"
+      ]
+    }
+  },
+  "scalingPriority": "gdk",
+  "bar.launcher.icon": "",
+  "bar.windowtitle.custom_title": true,
+  "bar.battery.label": false,
+  "bar.notifications.show_total": false,
+  "bar.media.show_active_only": true,
+  "menus.media.hideAuthor": false,
+  "menus.media.hideAlbum": false,
+  "menus.media.displayTime": false,
+  "menus.media.displayTimeTooltip": false,
+  "menus.media.noMediaText": ":(",
+  "theme.osd.enable": true,
+  "theme.osd.location": "top",
+  "theme.osd.orientation": "horizontal",
+  "menus.volume.raiseMaximumVolume": false,
+  "menus.clock.time.military": true,
+  "menus.clock.weather.enabled": true,
+  "menus.clock.weather.location": "Mátraterenye",
+  "menus.clock.weather.unit": "metric",
+  "menus.dashboard.stats.enable_gpu": false,
+  "menus.dashboard.shortcuts.left.shortcut1.icon": "󰈹",
+  "menus.dashboard.shortcuts.left.shortcut1.tooltip": "Firefox",
+  "menus.dashboard.shortcuts.left.shortcut1.command": "firefox",
+  "menus.dashboard.shortcuts.left.shortcut3.tooltip": "Vesktop",
+  "menus.dashboard.shortcuts.left.shortcut3.command": "vesktop",
+  "menus.power.showLabel": true,
+  "theme.bar.menus.opacity": 95,
+  "theme.bar.transparent": true,
+  "theme.bar.buttons.modules.ram.enableBorder": false,
+  "bar.customModules.ram.labelType": "used",
+  "bar.customModules.ram.icon": " ",
+  "bar.customModules.cpu.icon": " ",
+  "theme.font.size": "1.15rem",
+  "bar.customModules.netstat.rateUnit": "MiB",
+  "bar.customModules.netstat.dynamicIcon": false,
+  "bar.customModules.hyprsunset.label": false,
+  "theme.bar.buttons.modules.cava.enableBorder": false,
+  "bar.customModules.cava.showActiveOnly": true,
+  "bar.customModules.cava.stereo": false,
+  "menus.clock.time.hideSeconds": true
+}
