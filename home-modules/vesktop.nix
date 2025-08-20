@@ -19,7 +19,7 @@
     checkUpdates = false;
     customTitleBar = false;
     disableMinSize = true;
-    minimizeToTray = false;
+    minimizeToTray = true;
     tray = false;
     splashBackground = "#000000";
     splashColor = "#ffffff";
@@ -29,12 +29,17 @@
     discordBranch = "stable";
   };
 
+  programs.vesktop.vencord.themes = { 
+    "gruvbox-dark.theme.css" = ../themes/vesktop/gruvbox-dark.theme.css;
+  };
+
   programs.vesktop.vencord.settings = {
     autoUpdate = true;
     autoUpdateNotification = true;
     notifyAboutUpdates = true;
     useQuickCss = true;
     disableMinSize = true;
+    enabledThemes = "gruvbox-dark.theme.css";
     plugins = {
       MessageLogger = {
         enabled = true;

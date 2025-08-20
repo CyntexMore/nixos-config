@@ -395,8 +395,8 @@
       bar.layouts = {
         "0" = {
           left = [ "dashboard" "workspaces" ];
-          middle = [ "media" ];
-          right = [ "volume" "clock" "notifications" ];
+          middle = [ "media" "cava" ];
+          right = [ "cpu" "ram" "netstat" "volume" "hyprsunset" "systray" "clock" "notifications" ];
         };
         "1" = {
           left = [ "dashboard" "workspaces" ];
@@ -405,6 +405,17 @@
         };
       };
     };
+
+    monitors = [
+      {
+        name = "DP-1";
+        position = "top";
+      }
+      {
+        name = "HDMI-A-1";
+        position = "top";
+      }
+    ];
 
     "scalingPriority" = "gdk";
     "bar.launcher.icon" = "";
