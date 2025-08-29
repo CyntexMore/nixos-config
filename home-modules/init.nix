@@ -20,6 +20,7 @@
     ./fish.nix
     ./quickshell.nix
     ./hyprpanel.nix
+    ./emacs.nix
   ];
 
   home.stateVersion = "25.05";

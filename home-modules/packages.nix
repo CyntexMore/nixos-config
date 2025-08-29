@@ -86,7 +86,7 @@
 
     # QT stuff
     libsForQt5.qt5ct
-    libsForQt5.xwaylandvideobridge
+    kdePackages.xwaylandvideobridge
 
     # Theming
     vimix-icon-theme
@@ -98,5 +98,7 @@
     mplus-outline-fonts.githubRelease
 
     vulkan-tools
+
+    emacs-gtk
   ];
 }

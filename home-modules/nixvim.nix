@@ -9,10 +9,16 @@
 
     plugins.lsp.servers = {
       rust_analyzer.enable = true;
+      rust_analyzer.installCargo = false;
+      rust_analyzer.installRustc= false;
+
       gopls.enable = true;
       zls.enable = true;
-      nil-ls.enable = true;
+      nil_ls.enable = true;
       clangd.enable = true;
+      ts_ls.enable = true;
+      eslint.enable = true;
+      tailwindcss.enable = true;
     };
 
     colorschemes.gruvbox.enable = true;
@@ -28,7 +34,7 @@
 
       gitsigns.enable = true;
       comment.enable = true;
-      surround.enable = true;
+      vim-surround.enable = true;
     };
 
     keymaps = [
@@ -53,8 +59,6 @@
     ];
 
     extraConfigLua = ''
-      vim.opt.guicursor = "n-v-c-i:block"
-
       vim.opt.number = true
       vim.opt.relativenumber = true
       vim.opt.clipboard = 'unnamedplus'
