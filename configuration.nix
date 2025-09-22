@@ -5,9 +5,36 @@
 
   # imports = [ ];
 
-  environment.variables = {
-    EDITOR = "nvim";
-  };
+  # In /etc/nixos/configuration.nix
+
+  nixpkgs.overlays = [
+    (self: super: {
+      opentabletdriver = super.opentabletdriver.overrideAttrs (oldAttrs: {
+        postPatch = ''
+          # Search for the JSON file that contains the SW's decimal Product ID: "ProductID": 2355
+          local sw_config=$(grep -lr '"ProductID": 2355' .)
+
+          if [ -n "$sw_config" ]; then
+            # Define the path for our new MW config file (e.g., Deco Pro MW.json)
+            local mw_config=$(echo "$sw_config" | sed 's/SW/MW/')
+
+            echo "Found SW JSON config at: $sw_config"
+            echo "Creating config for Deco Pro MW at: $mw_config"
+            
+            # Copy the SW config file to a new file for the MW
+            cp "$sw_config" "$mw_config"
+
+            # Inside the new file, replace the decimal Product ID and the tablet's name
+            sed -i 's/2355/2356/' "$mw_config"
+            sed -i 's/Deco Pro SW/Deco Pro MW/' "$mw_config"
+          else
+            echo "ERROR: Could not find any JSON config containing '\"ProductID\": 2355'!" >&2
+            exit 1
+          fi
+        '';
+      });
+    })
+  ];
 
   boot.loader.systemd-boot.enable = true;
 
@@ -15,9 +42,17 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  networking.hostName = "nixos";
 
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "nixos";
+    networkmanager.enable = true;
+
+    extraHosts = ''
+      0.0.0.0 hkrpg-log-upload-os.hoyoverse.com
+      0.0.0.0 log-upload-os.hoyoverse.com
+      0.0.0.0 sg-public-data-api.hoyoverse.com
+    '';
+  };
 
   time.timeZone = "Europe/Budapest";
 
@@ -67,7 +102,19 @@
     variant = "";
   };
 
+
   console.keyMap = "hu";
+
+  fonts.packages = with pkgs; [
+    noto-fonts-cjk-sans
+    nerd-fonts._0xproto
+  ];
+
+  fonts.fontconfig.defaultFonts = {
+    serif = [ "Noto Serif CJK JP" ];
+    sansSerif = [ "Noto Sans CJK JP" ];
+    monospace = [ "Noto Sans Mono CJK JP" ];
+  };
 
   services.printing.enable = true;
 
@@ -95,7 +142,7 @@
     shell = pkgs.fish;
     isNormalUser = true;
     description = "david";
-    extraGroups = [ "networkmanager" "wheel" "i2c" "amdgpu" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "i2c" "amdgpu" "docker" "input" ];
     packages = with pkgs; [
       kdePackages.kate
     ];
@@ -151,6 +198,8 @@
     # Compiler
     gcc
     clang
+
+    opentabletdriver
   ];
 
   virtualisation.docker.enable = true;
@@ -160,7 +209,9 @@
     acceleration = "rocm";
   };
 
-  services.open-webui.enable = true;
+  services.pcscd.enable = true;
+
+  programs.gnupg.agent.enable = true;
 
   programs.steam = {
     enable = true;
@@ -188,7 +239,30 @@
 
   hardware.logitech.wireless.enable = true;
 
+  hardware.opentabletdriver.enable = true;
+
+  services.udev.packages = [ pkgs.opentabletdriver ];
+
+  services.jellyfin = {
+    enable = true;
+    openFirewall = true;
+    user="david";
+  };
+
+  services.flatpak.enable = true;
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  fileSystems."/home/david/mounts/tdrive" = {
+    device = "/dev/disk/by-uuid/d804db53-4119-45a2-b82b-096160218b51";
+    fsType = "ext4";
+  };
+
+  fileSystems."/home/david/mounts/sdrive" = {
+    device = "/dev/disk/by-uuid/25e14539-2352-430e-8ff9-cfbccf903d4b";
+    fsType = "ext4";
+  };
 
   system.stateVersion = "25.05";
 } 
+

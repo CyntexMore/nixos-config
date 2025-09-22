@@ -12,15 +12,15 @@
     ./hyprland.nix
     ./kitty.nix
     ./vesktop.nix
-    # ./waybar.nix
+    ./waybar.nix
     ./rofi.nix
     ./hyprpaper.nix
     ./gtk.nix
     ./qt.nix
     ./fish.nix
     ./quickshell.nix
-    ./hyprpanel.nix
-    ./emacs.nix
+    # ./hyprpanel.nix
+    ./foot.nix
   ];
 
   home.stateVersion = "25.05";

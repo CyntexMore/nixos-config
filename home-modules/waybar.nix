@@ -1,51 +1,25 @@
 { pkgs, ... }:
 
-# This configuration creates a "split" Waybar look with a Gruvbox Dark theme.
-# It includes modules for workspaces, window title, system tray, backlight (brightness),
-# audio, network, CPU, memory, and a clock.
-
-# --- IMPORTANT: NIXOS CONFIGURATION NOTES ---
-# You need to add the following packages and settings to your NixOS configuration
-# for all features to work.
-#
-# In home.nix or equivalent:
-# home.packages = with pkgs; [
-#   ddcutil            # For external monitor brightness control
-#   pavucontrol        # For audio control on-click
-#   networkmanagerapplet # Provides nm-connection-editor for network management
-#   btop               # For system monitoring on-click
-#   (nerdfonts.override { fonts = [ "0xProto" ]; })
-# ];
-#
-# In configuration.nix:
-# # Create the i2c group so ddcutil can use it
-# users.groups.i2c = {};
-# # Add your user to the (now existing) i2c group
-# users.users.david.extraGroups = [ "i2c" ]; # Replace 'david' with your username
-# # Load the necessary kernel module
-# boot.kernelModules = [ "i2c-dev" ];
-# -----------------------------------------
-
 {
   programs.waybar.enable = true;
 
   programs.waybar.settings = {
     mainBar = {
       layer = "top";
-      position = "top";
-      height = 40;
+      position = "bottom";
+      height = 20;
       spacing = 0;
 
-      modules-left = [ "hyprland/workspaces" "hyprland/window" ];
-      modules-center = [ "clock" ];
-      modules-right = [ "tray" "custom/brightness" "pulseaudio" "network" "cpu" "memory" ];
+      modules-left = [ "hyprland/workspaces" ];
+      modules-center = [ "hyprland/window" ];
+      modules-right = [ "tray" "custom/brightness" "pulseaudio" "network" "cpu" "memory" "clock" ];
 
       # --- MODULE CONFIGURATIONS ---
 
       "hyprland/workspaces" = {
         format = "{icon}";
         format-icons = {
-          "1" = ""; "2" = ""; "3" = ""; "4" = ""; "5" = "";
+          "1" = "󰈹"; "2" = ""; "3" = ""; "4" = ""; "5" = "";
           "urgent" = "";
           "default" = "";
         };
@@ -71,12 +45,10 @@
         on-click = "mode";
       };
 
-      # --- CUSTOM BRIGHTNESS MODULE FOR EXTERNAL MONITORS ---
       "custom/brightness" = {
-        # **FIXED**: Using bus 14 for your DP-1 monitor
         exec = "ddcutil --bus 14 getvcp 10 | awk -F 'current value = |, ' '{print $2}'";
         format = "󰃠 {}%";
-        interval = 10; # Check brightness every 10 seconds
+        interval = 10;
         on-scroll-up = "ddcutil --bus 14 setvcp 10 + 5";
         on-scroll-down = "ddcutil --bus 14 setvcp 10 - 5";
         tooltip = true;
@@ -139,10 +111,12 @@
     /* --- GLOBAL STYLES --- */
     * {
       border: none;
-      border-radius: 0; /* We will apply radius to modules individually */
+      border-radius: 0;
       font-family: "0xProto Nerd Font Mono", monospace;
-      font-size: 15px;
+      font-size: 14px;
       min-height: 0;
+      margin-left: 1px;
+      margin-right: 1px;
     }
 
     window#waybar {
@@ -163,7 +137,6 @@
       background-color: @bg-alt;
       padding: 5px 15px;
       margin: 4px 0px;
-      border-radius: 12px;
       border: 1px solid @gray;
     }
 
@@ -189,7 +162,6 @@
     #workspaces button:hover {
       color: @fg;
       background-color: @bg-alt;
-      border-radius: 8px;
     }
     #workspaces button.active {
       color: @aqua;
@@ -211,7 +183,6 @@
     tooltip {
       background-color: @bg;
       border: 1px solid @purple;
-      border-radius: 8px;
     }
     tooltip label {
       color: @fg;

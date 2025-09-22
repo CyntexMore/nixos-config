@@ -12,8 +12,8 @@
       package = pkgs.vimix-icon-theme;
     };
     cursorTheme = {
-      name = "Bibata-Modern-Classic";
-      package = pkgs.bibata-cursors;
+      name = "DMZ-Black";
+      package = pkgs.vanilla-dmz;
     };
   };
 }

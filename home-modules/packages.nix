@@ -17,7 +17,6 @@
     pgcli
 
     gpu-screen-recorder
-    ffmpeg-full
 
     doxygen
 
@@ -92,6 +91,7 @@
     vimix-icon-theme
     bibata-cursors
     vanilla-dmz
+    kdePackages.breeze
     # ayu-theme-gtk
     gruvbox-gtk-theme
     # Fonts
@@ -99,6 +99,27 @@
 
     vulkan-tools
 
-    emacs-gtk
+    mangohud
+
+    # PGP
+    gnupg
+    pinentry-all
+    kdePackages.kleopatra
+
+    element-desktop
+
+    # foot
+    foot
+
+    gamemode
+
+    librewolf
+
+    # Jellyfin
+    jellyfin
+    jellyfin-ffmpeg
+    jellyfin-web
+    jellyfin-rpc
   ];
 }
+

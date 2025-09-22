@@ -6,6 +6,8 @@ in
 {
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
+
+    EDITOR = "nvim";
     
     ROCM_PATH = rocmPath;
     HSA_OVERRIDE_GFX_VERSION = "11.0.0";

@@ -34,12 +34,14 @@
     };
 
     decoration = {
-      rounding = 12;
+      rounding = 0;
     };
 
     general = {
-      gaps_in = 10;
-      gaps_out = 20;
+      #gaps_in = 10;
+      #gaps_out = 20;
+      gaps_in = 2;
+      gaps_out = 2;
       
       border_size = 1;
 
@@ -58,6 +60,7 @@
       "fcitx5"
       # "dunst"
       # "hyprpanel"
+      "waybar"
       "hyprpaper"
       "solaar"
     ];
@@ -66,23 +69,23 @@
     
     "$terminal" = "kitty";
     "$applaunch" = "rofi -show drun";
-    "$browser" = "firefox";
+    "$browser" = "librewolf";
     "$fileManager" = "thunar";
 
     animations = {
-      enabled = true;
+      enabled = false;
 
       bezier = [
         "majesticBezier, 0.15, 0.9, 0.25, 1.05"
 	      "softFade, 0.4, 0, 0.2, 1"
       ];
 
-       animation = [
-         "windows, 1, 7, majesticBezier"
-         "border, 1, 5, majesticBezier"
-         "fade, 1, 5, softFade"
-         "workspaces, 1, 6, majesticBezier"
-       ];
+      animation = [
+        "windows, 1, 7, majesticBezier"
+        "border, 1, 5, majesticBezier"
+        "fade, 1, 5, softFade"
+        "workspaces, 1, 6, majesticBezier"
+      ];
     };
 
     dwindle = {
