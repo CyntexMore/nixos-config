@@ -7,59 +7,62 @@
   # This is the new, correct method.
   # We are manually creating the config file at ~/.config/rofi/config.rasi
   xdg.configFile."rofi/config.rasi".text = ''
-    /* This file is managed by home-manager */
-
     configuration {
       modi:                  "drun,run,window";
       show-icons:            true;
       terminal:              "kitty";
       drun-display-format:   "{name}";
+      font:                  "0xProto Nerd Font Mono 14";
+      icon-theme:            "Vimix";
     }
-    
-    * {
-      /* Colors and Font */
-      bg:               #282a36;
-      fg:               #f8f8f2;
-      accent:           #8be9fd;
-      subtle:           #6272a4;
 
-      background-color: @bg;
+    * {
+      /* Gruvbox Dark Colors */
+      bg:           #282828;
+      bg-alt:       #3c3836;
+      fg:           #ebdbb2;
+      accent:       #8ec07c; /* gruvbox green */
+      subtle:       #928374;
+
+      background-color: transparent;
       text-color:       @fg;
-      font:             "0xProto Nerd Font Mono 14";
     }
 
     window {
-      location:     center;
-      anchor:       center;
-      width:        500px;
-      border:       2px;
-      border-color: @accent;
-      padding:      16px;
+      location:         center;
+      anchor:           center;
+      width:            650px;
+      border:           2px;
+      border-color:     @subtle;
+      border-radius:    15px;
+      padding:          15px;
+      background-color: @bg;
     }
 
     mainbox {
       children: [ "inputbar", "listview" ];
-      spacing:  12px;
+      spacing:  15px;
     }
 
     inputbar {
       children:      [ "prompt", "entry" ];
-      padding:       8px;
-      border:        0 0 2px 0;
-      border-color:  @accent;
+      padding:       12px;
+      border-radius: 10px;
+      background-color: @bg-alt;
     }
 
     prompt {
       enabled:          true;
-      padding:          8px;
-      background-color: @accent;
-      text-color:       @bg;
+      padding:          0px 8px 0px 0px;
+      background-color: inherit;
+      text-color:       @accent;
     }
 
     entry {
       placeholder:       "Search...";
       placeholder-color: @subtle;
-      padding:           8px;
+      padding:           0px;
+      background-color:  inherit;
     }
 
     listview {
@@ -72,32 +75,32 @@
     }
 
     element {
-      padding:       8px;
-      border-radius: 0px;
+      padding:       10px;
+      border-radius: 8px;
     }
 
-    /* --- THIS IS THE NEWLY ADDED/CORRECTED SECTION --- */
-    /* Set default colors for all list items */
-    element.normal.normal,
+    element.normal.normal {
+      background-color: @bg;
+      text-color:       @fg;
+    }
+
     element.alternate.normal {
       background-color: @bg;
       text-color:       @fg;
     }
-    
-    /* Set colors for the selected list item */
+
     element.selected.normal {
       background-color: @accent;
       text-color:       @bg;
     }
-    /* --- END OF NEW SECTION --- */
 
     element-text, element-icon {
       vertical-align: 0.5;
     }
-    
+
     element-icon {
-      size: 1.2em;
-      padding: 0 10px 0 0;
+      size: 1.5em;
+      padding: 0 15px 0 5px;
     }
   '';
 }

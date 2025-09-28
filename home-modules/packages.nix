@@ -120,6 +120,8 @@
     jellyfin-ffmpeg
     jellyfin-web
     jellyfin-rpc
+
+    texlive.combined.scheme-full
   ];
 }
 
